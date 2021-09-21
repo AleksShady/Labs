@@ -1,0 +1,16 @@
+#include <stdio.h>
+int main()
+{
+    int x, y, c, d, e, f;
+    printf("enter x ");
+    scanf("%d", &x);
+    printf("enter y ");
+    scanf("%d", &y);
+    c =  x + y;
+    d = x - y;
+    e = x*y;
+    f = x/y;
+    printf("x = %d y=  %d\n x+y %d\n x-y= %d\n x*y= %d\n x/y= %d\n", x, y, c, d, e, f);
+
+    return 0;
+}
