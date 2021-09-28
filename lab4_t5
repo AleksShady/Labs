@@ -1,0 +1,47 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+
+struct ing {
+    char ingName[50];
+    unsigned short ingAmount;
+} i1;
+
+struct recipe {
+    char recName[50];
+    struct ing ingredient[10];
+} r1;
+
+
+int main() {
+
+    struct recipe cookbook[5];
+    int lenC = sizeof(cookbook) / sizeof(r1);
+    int lenI = 0;
+    int i, j;
+
+    //cookbook initialization
+    for (i = 0; i < lenC; i++) {
+        lenI = sizeof(cookbook[i].ingredient) / sizeof(i1);
+        snprintf(cookbook[i].recName, sizeof(cookbook[i].recName), "Recipe %d", i);
+        for (j = 0; j < lenI; j++) {
+            snprintf(cookbook[i].ingredient[j].ingName, sizeof(cookbook[i].ingredient[j].ingName), "Ingredient %d", j);
+            cookbook[i].ingredient[j].ingAmount = rand() % 1000;
+           
+        }
+    }
+
+    
+    for (i = 0; i < lenC; i++) {
+        printf("--------%s--------\n", cookbook[i].recName);
+        lenI = sizeof(cookbook[i].ingredient) / sizeof(i1);
+        for (j = 0; j < lenI; j++) {
+            printf("ingredient name: %s amount: %d gram\n", cookbook[i].ingredient[j].ingName,
+                   cookbook[i].ingredient[j].ingAmount);
+        }
+        printf("-----------------------\n\n");
+    }
+
+
+    return 0;
+}
