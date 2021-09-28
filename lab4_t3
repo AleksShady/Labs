@@ -1,0 +1,39 @@
+task 3
+#include <stdio.h>  
+  
+union st {  
+    unsigned long long n;  
+ struct {  
+        unsigned char byte[sizeof(unsigned long long)];  
+ };  
+};  
+  
+void encryption(char byte[]) {  
+    int len = sizeof(byte);  
+ unsigned char temp;  
+  
+ for (int i = len - 1; i > 0; i = i - 2) {  
+        temp = byte[i];  
+ byte[i] = byte[i - 1];  
+ byte[i - 1] = temp;  
+ // printf("byte[i-1]: %d", byte[i - 1]);  
+ // printf(" byte[i]: %d", temp); // printf(" i: %d\n", i); }  
+}  
+  
+int main() {  
+    union st str;  
+ str.n = 0;  
+ printf("Please enter number:");  
+ scanf("%llu", &str.n);  
+ // str.n = 22343457;  
+ printf("Original message: %llu\n", str.n);  
+ // printf("%d\n", sizeof(str.n));  
+ // printf("%d\n", sizeof(str.byte));  
+ encryption(str.byte);  
+ printf("Encrypted message: %llu\n", str.n);  
+ encryption(str.byte);  
+ printf("Decrypted message: %llu\n", str.n);  
+  
+ return 0;
+ }
+ 
