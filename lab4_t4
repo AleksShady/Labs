@@ -1,0 +1,23 @@
+#include <stdio.h>  
+  
+  
+struct {  
+    unsigned short day : 4;  
+ unsigned short month : 4;
+ unsigned short year : 8;
+  
+} st;  
+  
+const short startYear = 1800;  
+  
+int main() {  
+  
+    st.month = 03;  
+ st.day = 11;  
+ st.year = 2004 - startYear;  
+  
+ printf("My birth day is: %d.%d.%d\n", st.day, st.month, st.year+startYear);  
+ printf("Struct size:%u\n", sizeof(st));  
+
+ return 0;
+ }
