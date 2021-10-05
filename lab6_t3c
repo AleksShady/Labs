@@ -1,0 +1,28 @@
+package com.company;
+
+import java.util.Arrays;
+import java.util.Scanner;
+import java.util.ArrayList;
+
+public class Main {
+
+
+    public static void main(String[] args) {
+        int arrT[] = {1, 2, 23, 2, 56, 87, 100, 2, 100, 22, 1, 73, 6, 12, 2, 23};
+        ArrayList<Integer> arrL = new ArrayList<>();
+        int len = arrT.length;
+        for (int i = 0; i < len; i++) {
+            for (int j = i + 1; j < len; j++) {
+                if (arrT[j] == arrT[i] && arrL.indexOf(arrT[j]) < 0) {
+                    
+                    arrL.add(arrT[j]);
+                    
+                }
+
+            }
+
+        }
+        System.out.println(arrL.toString());
+    }
+
+}
