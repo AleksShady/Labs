@@ -1,0 +1,17 @@
+package com.company;
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        double celsius;
+        System.out.print("Please enter temperature in Celsius: ");
+        Scanner input = new Scanner(System.in);
+        celsius = input.nextDouble();
+        input.close();
+
+
+        double fahrenheit = celsius * 1.8 + 32;
+        System.out.println("Temperature in fahrenheit :" + fahrenheit);
+    }
+}
