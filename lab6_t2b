@@ -1,0 +1,84 @@
+package com.company;
+
+import java.util.Scanner;
+
+class Time {
+    int Hour, Minute, Second;
+
+    Time timeDifference(Time finishTime) {
+        Time diffTime = new Time();
+        int startSeconds = this.Hour * 3600 + this.Minute * 60 + this.Second;
+        int finishSeconds = finishTime.Hour * 3600 + finishTime.Minute * 60 + finishTime.Second;
+        int diffSeconds = finishSeconds - startSeconds;
+        diffTime.Hour = diffSeconds / 3600;
+        diffTime.Minute = (diffSeconds % 3600) / 60;
+        diffTime.Second = (diffSeconds % 60);
+        return diffTime;
+    }
+}
+
+
+public class Main {
+    public static void main(String[] args) {
+
+        Time startTime = new Time();
+        Time finishTime = new Time();
+
+        System.out.println("Please enter start Time, Hours, Minutes, Seconds:");
+
+        Scanner input = new Scanner(System.in);
+
+        System.out.println("Hours:");
+        startTime.Hour = input.nextInt();
+        if(startTime.Hour>24) {
+            System.out.println("Hours should be equal or less then 24");
+            return;}
+
+        System.out.println("Minutes:");
+        startTime.Minute = input.nextInt();
+        if(startTime.Minute>59){
+            System.out.println("Minutes should be less then 60");
+            return;
+        }
+
+        System.out.println("Seconds:");
+        startTime.Second = input.nextInt();
+        if(startTime.Second>59){
+            System.out.println("Seconds should be less then 60");
+            return;
+        }
+
+        System.out.println("Please enter finish Time, Hours, Minutes, Seconds:");
+        System.out.println("Hours:");
+        finishTime.Hour = input.nextInt();
+        if(finishTime.Hour>24) {
+            System.out.println("Hours should be equal or less then 24");
+            return;}
+
+        System.out.println("Minutes:");
+        finishTime.Minute = input.nextInt();
+        if(finishTime.Minute>59) {
+            System.out.println("Minutes should be less then 60");
+            return;
+        }
+
+        System.out.println("Seconds:");
+        finishTime.Second = input.nextInt();
+        if(finishTime.Second>59){
+            System.out.println("Seconds should be less then 60");
+            return;
+        }
+
+        input.close();
+
+        System.out.println("Start time is " + startTime.Hour + ":" + startTime.Minute + ":" + startTime.Second);
+        System.out.println("Finish time is " + finishTime.Hour + ":" + finishTime.Minute + ":" + finishTime.Second);
+
+
+        Time t = startTime.timeDifference(finishTime);
+        System.out.println("Difference between time periods is: " + "Hours: " + t.Hour + " Minutes: "
+                + t.Minute + " Seconds: " + t.Second);
+
+
+    }
+}
