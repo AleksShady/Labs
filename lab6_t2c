@@ -1,0 +1,61 @@
+package com.company;
+
+import java.util.Scanner;
+
+
+public class Main {
+    public static void main(String[] args) {
+
+        String temp;
+       
+        Scanner input = new Scanner(System.in);
+       
+
+        System.out.println("Choose original format, please enter 2 for binary, 10 for decimal, 16 for  hexadecimal)");
+
+        try {
+
+
+            int fromFormat = input.nextInt();
+            System.out.println("Please enter a number: ");
+
+            int result;
+
+            switch (fromFormat) {
+                case 2:
+                    result = Integer.parseInt(input.next(), 2);
+                    break;
+                case 10:
+                    result = Integer.parseInt(input.next(), 10);
+                    break;
+                case 16:
+                    result = Integer.parseInt(input.next(), 16);
+                    break;
+                default:
+                    System.out.println("You entered wrong format");
+                    return;
+
+            }
+            ;
+
+            System.out.println("Please choose output format, enter 2 for binary, 10 for decimal, 16 for  hexadecimal");
+            int toFormat = input.nextInt();
+            switch (toFormat) {
+                case 2:
+                    System.out.println("Result: " + Integer.toBinaryString(result));
+                    break;
+                case 10:
+                    System.out.println("Result: " + result);
+                    break;
+                case 16:
+                    System.out.println("Result: " + Integer.toHexString(result));
+                    break;
+                default:
+                    System.out.println("You entered wrong format");
+                    return;
+            }
+        } catch (java.util.InputMismatchException e) {
+            System.out.println("You entered wrong number");
+        }
+    }
+}
