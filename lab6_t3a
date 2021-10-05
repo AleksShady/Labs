@@ -1,0 +1,18 @@
+package com.company;
+
+import java.util.Scanner;
+
+
+public class Main {
+    public static void main(String[] args) {
+        int arr[] = {1, 23, 56, 87, 2, 100, 22, 73, 6, 12};
+        double medium=0;
+        for (int i: arr) {
+            medium += i;
+        }
+        medium = medium/ arr.length;
+        System.out.println("Average value of array is: "+medium);
+        
+    }
+        
+}
