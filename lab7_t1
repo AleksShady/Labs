@@ -1,0 +1,46 @@
+package com.company;
+
+//import java.util.Arrays;
+import java.util.Scanner;
+//import java.util.ArrayList;
+
+public class Main {
+
+
+    public static void main(String[] args) {
+        System.out.println("Enter first number: ");
+        Scanner input = new Scanner(System.in);
+        double f_number = input.nextInt();
+        System.out.println("Enter second number: ");
+        double s_number = input.nextInt();
+        System.out.println("Print symbol of operation to perform: ");
+        String operator = input.next();
+        double result = 0;
+        if (s_number > 0 && f_number > 0) {
+            switch (operator) {
+
+                case "+":
+                    result = f_number + s_number;
+                    break;
+
+                case "-":
+                    result = f_number - s_number;
+                    break;
+
+                case "*":
+                    result = f_number * s_number;
+                    break;
+                case "/":
+                    result = f_number/s_number;
+                    break;
+
+
+                    }
+            System.out.println("Your result is: " + result);
+            }
+        else {
+            System.out.println("Cannot apply operations to negative integers or divide by zero");
+        }
+
+    }
+}
