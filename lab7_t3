@@ -1,0 +1,129 @@
+package com.company;
+
+
+class Time {
+    private int hour = 0;
+    private int minute = 0;
+    private int second = 0;
+
+    public Time(int hour, int minute, int second)
+    {
+        if (hour > 23) {
+            hour = 0;
+            System.out.println("Hours should be less then 23");
+        }
+        if (minute > 59) {
+            minute = 0;
+            System.out.println("Minutes should be less then 59");
+        }
+        if (second > 59) {
+            second = 0;
+            System.out.println("Seconds should be less then 59");
+        }
+
+        this.hour = hour;
+        this.minute = minute;
+        this.second = second;
+    }
+
+    public Time(int hour, int minute)
+    {
+        if (hour > 23) {
+            hour = 0;
+            System.out.println("Hours should be less then 23");
+        }
+        if (minute > 59) {
+            minute = 0;
+            System.out.println("Minutes should be less then 59");
+        }
+
+        this.hour = hour;
+        this.minute = minute;
+    }
+
+    public Time(int hour)
+    {
+        if (hour > 23) {
+            hour = 0;
+            System.out.println("Hours should be less then 23");
+        }
+
+        this.hour = hour;
+    }
+
+    private Time() {
+    }
+
+    Time timeDifference(Time finishTime) {
+        Time diffTime = new Time();
+        int startSeconds = this.hour * 3600 + this.minute * 60 + this.second;
+        int finishSeconds = finishTime.hour * 3600 + finishTime.minute * 60 + finishTime.second;
+        int diffSeconds = finishSeconds - startSeconds;
+        diffTime.hour = diffSeconds / 3600;
+        diffTime.minute = (diffSeconds % 3600) / 60;
+        diffTime.second = (diffSeconds % 60);
+        return diffTime;
+    }
+
+    Time inc() {
+        if (this.second == 59) {
+            this.second = 0;
+            if (this.minute == 59) {
+                this.minute = 0;
+                if (this.hour == 23) {
+                    this.hour = 0;
+                } else {
+                    this.hour++;
+                }
+            } else {
+                this.minute++;
+            }
+        } else {
+            this.second++;
+        }
+        return this;
+    }
+
+    @Override
+    public String toString() {
+        return "Time{" +
+                "hour=" + hour +
+                ", minute=" + minute +
+                ", second=" + second +
+                '}';
+    }
+}
+
+class TimeCreator{
+    public Time createTime(int hour, int minute, int second){
+        return new Time(hour,minute,second);
+    }
+
+    public Time createTime(int hour, int minute){
+        return new Time(hour,minute);
+    }
+
+    public Time createTime(int hour){
+        return new Time(hour);
+    }
+
+}
+
+public class Main {
+    public static void main(String[] args) {
+
+        TimeCreator tc = new TimeCreator();
+        Time t = tc.createTime(13);
+        Time t2 = tc.createTime(14,12,11);
+
+        System.out.println(t);
+
+        t.inc().inc().inc();
+        System.out.println(t);
+        System.out.println(t2);
+
+        System.out.println(t.timeDifference(t2));
+    
+
+    }
+}
